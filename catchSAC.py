@@ -45,8 +45,8 @@ def lock():
 
 def gethtml1(date):
     formdata = {
-        'username':'jianhui',
-        'password':'0605jjh',
+        'username':'',
+        'password':'',
         'ValidateCode': 'False',
         'url':'/user/clientIndex'
         }
@@ -84,8 +84,8 @@ def gethtml1(date):
 
 def gethtml2(date):
     formdata = {
-        'username':'jianhui',
-        'password':'0605jjh',
+        'username':'',
+        'password':'',
         'saveStatus':'true',
         'ValidateCode':'False',
         'url': '/dz/user/index'
@@ -126,8 +126,8 @@ def gethtml2(date):
 
 def gethtml3(date):
     formdata = {
-        'account': 'jianhui',
-        'pwd': '0605jjh',
+        'account': '',
+        'pwd': '',
         'code': ''
         }
     data = urllib.parse.urlencode(formdata).encode('utf-8')
