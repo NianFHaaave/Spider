@@ -30,19 +30,19 @@ def getimage(htmlcode):
     imglist = regimg.findall(htmlcode)
     x = 1
     for img in imglist:
-        print ("正在加载第 %s" %x + "张图片")
+        print ("loading %s" %x + "th photo")
         opener = urllib.request.build_opener()
         opener.addheaders = [('User-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36')]
         urllib.request.install_opener(opener)
         urllib.request.urlretrieve(img, pathname(x))
         x += 1
 
-print ('vs炉石周报获取！')
+print ('vsdata！')
 input()
 url = 'http://data-reaper-report.vicioussyndicate.com/'
-print ('----------正在获取最新的标准vs周报---------')
+print ('----------loading---------')
 htmlcode = gethtml(url)
-print ('----------正在下载图片---------')
+print ('----------downloading---------')
 getimage(htmlcode)
-print ('-----------下载成功-----------')
+print ('-----------succeeded-----------')
 input('Press Enter to exit')
