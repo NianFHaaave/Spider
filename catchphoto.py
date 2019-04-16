@@ -30,12 +30,12 @@ def getimage(htmlcode):
         urllib.request.urlretrieve(img, pathname(x))
         x += 1
 
-print ('从贴吧中获得表情包！')
-a=input('输入p/后的数字')
+print ('gainfromtieba！')
+a=input('p/')
 url = 'https://tieba.baidu.com/p/'+a
-print ('----------正在获取网页---------')
+print ('----------loading---------')
 htmlcode = gethtml(url)
-print ('----------正在下载图片---------')
+print ('----------downloading---------')
 getimage(htmlcode)
-print ('-----------下载成功-----------')
+print ('-----------succeeded-----------')
 input('Press Enter to exit')
