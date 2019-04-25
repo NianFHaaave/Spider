@@ -32,27 +32,13 @@ P2 = 0
 P3 = 0
 
 
-def lock():
-    try:
-        key = winreg.OpenKey(winreg.HKEY_CURRENT_USER,'Software\InstallOps')
-        [a,b,c] = winreg.EnumValue(key,0)
-        date = datetime.datetime.fromtimestamp(int(b))
-    except:     
-        winreg.CreateKey(winreg.HKEY_CURRENT_USER,'Software\InstallOps')
-        winreg.SetValue(winreg.HKEY_CURRENT_USER,'Software\InstallOps',winreg.REG_SZ,str(int(time.time())))
-        date = datetime.datetime.fromtimestamp(int(time.time()))
-    return date
 
 def gethtml1(date):
     formdata = {
-        'username':'',
-        'password':'',
-        'ValidateCode': 'False',
-        'url':'/user/clientIndex'
         }
     data = urllib.parse.urlencode(formdata).encode('utf-8')
     headers = {
-        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36',
+        '',
         }
     url = 'http://portal.global-mde.com/dz/home/login'
     rlog = urllib.request.Request(url, headers = headers, data = data)
@@ -64,18 +50,13 @@ def gethtml1(date):
     for i in cookie:
         a.append(i.name)
         b.append(i.value)
-    url = 'http://portal.global-mde.com/dz/user/overviewdata/1675?date='+date
+    url = ''
     c = ''
     for i in range(len(a)):
         c = c + a[i] + '=' + b[i]+'; '
     cookie = c + 'Lang=en'
     headers = {
-        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36',
-        'Connection':'keep-alive',
-        'Host':'portal.global-mde.com',
-        'Referer':'http://portal.global-mde.com/dz/User/overview/1675',
-        'Upgrade-Insecure-Requests':'1',
-        'Cookie':cookie}
+           }
     req=urllib.request.Request(url,headers=headers)
     page = urllib.request.urlopen(req)
     htmlcode = page.read().decode('utf-8')
@@ -84,17 +65,12 @@ def gethtml1(date):
 
 def gethtml2(date):
     formdata = {
-        'username':'',
-        'password':'',
-        'saveStatus':'true',
-        'ValidateCode':'False',
-        'url': '/dz/user/index'
         }
     data = urllib.parse.urlencode(formdata).encode('utf-8')
     headers = {
-        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36',
+        '',
         }
-    url = 'https://www.solax-portal.com/dz/home/login'
+    url = ''
     rlog = urllib.request.Request(url, headers = headers, data = data)
     cookie = http.cookiejar.CookieJar()
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cookie))
@@ -111,13 +87,10 @@ def gethtml2(date):
     date2 = date1 + datetime.timedelta(days = 1)
     date1 = date1.strftime('%Y-%m-%d')
     date2 = date2.strftime('%Y-%m-%d')
-    url = 'https://www.solax-portal.com/dz/home/overviewdata/232406?timetype=string&columnName=dqgl&timeColumnName=RTCTime&StartTime='+ date1 +'&EndTime='+ date2
-    cookie = c + '_gat=1'
+    url = ''
+    cookie = ''
     headers = {
-        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36',
-        'Referer':'https://www.solax-portal.com/dz/user/overview/232406',
-        'Upgrade-Insecure-Requests':'1',
-        'Cookie':cookie}
+        }
     req=urllib.request.Request(url,headers=headers)
     page = urllib.request.urlopen(req)
     htmlcode = page.read().decode('utf-8')
@@ -132,9 +105,9 @@ def gethtml3(date):
         }
     data = urllib.parse.urlencode(formdata).encode('utf-8')
     headers = {
-        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36',
+        '',
         }
-    url = 'https://www.semsportal.com/Home/Login'
+    url = ''
     rlog = urllib.request.Request(url, headers = headers, data = data)
     cookie = http.cookiejar.CookieJar()
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cookie))
@@ -147,26 +120,14 @@ def gethtml3(date):
     c = ''
     for i in range(len(a)):
         c = c + a[i] + '=' + b[i]+'; '
-    url = 'https://www.semsportal.com/GopsApi/Post?s=v1/PowerStation/GetPowerCharts'
-    cookie = c + 'acceptcookie=true ;jianhui=0605jjh'
+    url = ''
+    cookie = ''
     headers = {
-        'Accept':'*/*',
-        'Accept-Encoding':'gzip, deflate, br',
-        'Accept-Language':'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7',
-        'Connection':'keep-alive',
-        'Content-Length':'199',
-        'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',
-        'Cookie':cookie,
-        'Host':'www.semsportal.com',
-        'Origin':'https://www.semsportal.com',
-        'Referer':'https://www.semsportal.com/PowerStation/PlantDetailCharts/1c21baac-63e1-4874-ba52-aa1de3b83c97?is_stored=true&charts_type=2&currency=USD&has_pv=true&only_bps=false',
-        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36',
-        'X-Requested-With':'XMLHttpRequest',
         }
     date = datetime.datetime.strptime(date,'%Y-%m-%d')
     date = date.strftime('%m/%d/%Y')
     formdata = {
-        'str':'{"api":"v1/PowerStation/GetPowerCharts","param":{"powerStationId":"1c21baac-63e1-4874-ba52-aa1de3b83c97","date":"' + date + ' 00:00:00"}}'
+        'str':''
         }
     data = urllib.parse.urlencode(formdata).encode('utf-8')
     r=urllib.request.Request(url,headers=headers)
@@ -456,7 +417,6 @@ def comb(date):
     plt.bar(range(3),income,color='rgb',tick_label = namelist,width = 0.5)
 
 startdate = lock()
-datelock = str(startdate + datetime.timedelta(days = 30))
 plt.figure("JinKo")
 plt.subplots_adjust(left=0.08, bottom=0.08, right=0.92, top=0.92, wspace=0.33, hspace=0.40)
 plt.ion()
@@ -464,13 +424,8 @@ while 1:
     date = datetime.datetime.today().strftime('%Y-%m-%d')
     date1 = str(datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S'))
     #date = '2019-1-25'
-    if datelock > date1:
-        print("Reload data at "+date1)
-        comb(date)
-        plt.show()
-        plt.pause(150)
-        plt.clf()
-    else:
-        print('timeover')
-        plt.close()
-        break
+    print("Reload data at "+date1)
+    comb(date)
+    plt.show()
+    plt.pause(150)
+    plt.clf()
