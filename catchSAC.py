@@ -40,7 +40,7 @@ def gethtml1(date):
     headers = {
         '',
         }
-    url = 'http://portal.global-mde.com/dz/home/login'
+    url = ''
     rlog = urllib.request.Request(url, headers = headers, data = data)
     cookie = http.cookiejar.CookieJar()
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cookie))
