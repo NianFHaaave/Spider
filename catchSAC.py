@@ -416,7 +416,6 @@ def comb(date):
     plt.subplot(2,2,4)
     plt.bar(range(3),income,color='rgb',tick_label = namelist,width = 0.5)
 
-startdate = lock()
 plt.figure("JinKo")
 plt.subplots_adjust(left=0.08, bottom=0.08, right=0.92, top=0.92, wspace=0.33, hspace=0.40)
 plt.ion()
